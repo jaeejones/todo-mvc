@@ -60,6 +60,10 @@
             @Html.ActionLink("Details", "Details", new { id=item.ItemID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ItemID })
         </td>
+        <td>
+            <a href="@Url.Action("MarkAllDone")"></a>
+            //Add a button mark all done as well
+        </td>
     </tr>
 }
 

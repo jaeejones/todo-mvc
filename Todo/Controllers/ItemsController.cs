@@ -126,6 +126,40 @@ namespace Todo.Controllers
 
             return RedirectToAction("Index");
         }
+        public ActionResult MarkAllDone(bool done) // int is place of the number on the list(which on mine is chicken ? allows nulls| this the  code that is called when we check a box on the idem list
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest); // if there is no number the app tells the user that is was a bad request with no number. Null means nothing, no data available
+            }
+            // find the thing that has the id or has the key of whatever the item involves, this could return null
+
+            foreach (var MarkAllDone in db.Items)
+            {
+                MarkAllDone.IsDone = true;
+            }
+            Item item = db.Items.Find(id);
+
+            if (item == null) // if the item is null(there is no data) then the return Http..etc will run below this line
+            {
+                return HttpNotFound();
+
+            }
+
+            if (item.IsDone) // Item is found, this code will change the properties on the console, this code looks at the value and flips it.
+            {
+                item.IsDone = false; //if Item Isdone change to false
+            }
+            else
+            {
+                item.IsDone = true;
+            }
+
+            db.SaveChanges();  // will automatically set up changes in the database 
+
+            return RedirectToAction("Index");// any changes made in the datebase will be refreshed and relfected in the Index(veiew)
+
+        }
 
 
         // GET: Items/Delete/5
