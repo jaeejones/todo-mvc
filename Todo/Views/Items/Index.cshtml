@@ -56,13 +56,14 @@
             @Html.DisplayFor(modelItem => item.Details)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ItemID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ItemID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ItemID })
+            @Html.ActionLink("Edit", "Edit", new { @class = "glyphicon glyphicon-pencil" }) 
+            @Html.ActionLink("Details", "Details", new { @class = "glyphicon glyphicon-list-alt" }) |
+            @Html.ActionLink("Delete", "Delete", new { @class = "glyphicon glyphicon-remove-sign" })
         </td>
+        @*<li>@Html.ActionLink(" ", "Index", "Home", null, new { @class = "link-icon" }) </li>*@
         <td>
-            <a href="@Url.Action("MarkAllDone")"></a>
-            //Add a button mark all done as well
+            @*<a href="@Url.Action("MarkAllDone")"></a>*@
+            @*//Add a button mark all done as well*@
         </td>
     </tr>
 }
